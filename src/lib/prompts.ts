@@ -14,12 +14,12 @@ export function buildPrompt(feature: Feature, input: Record<string, string>): st
       return `TASK: Draft a workplace email.
 
 CONTEXT
-- Audience: ${input.audience || "colleague"}
-- Tone: ${input.tone || "professional"}
-- Desired length: ${input.length || "medium"}
+- Audience: ${input['audience'] || "colleague"}
+- Tone: ${input['tone'] || "professional"}
+- Desired length: ${input['length'] || "medium"}
 - Purpose / key points from the user:
 """
-${input.brief || ""}
+${input['brief'] || ""}
 """
 
 OUTPUT FORMAT (markdown, exactly these sections)
@@ -39,9 +39,9 @@ OUTPUT FORMAT (markdown, exactly these sections)
 
 RAW NOTES
 """
-${input.notes || ""}
+${input['notes'] || ""}
 """
-Meeting context: ${input.context || "not specified"}
+Meeting context: ${input['context'] || "not specified"}
 
 OUTPUT FORMAT (markdown, exactly these sections; omit a bullet list only if truly nothing applies)
 **Executive summary**
@@ -66,11 +66,11 @@ OUTPUT FORMAT (markdown, exactly these sections; omit a bullet list only if trul
 
 TASKS AND CONSTRAINTS
 """
-${input.tasks || ""}
+${input['tasks'] || ""}
 """
-- Available working hours: ${input.hours || "8"} per day
-- Planning horizon: ${input.horizon || "today"}
-- Stated priorities / deadlines: ${input.priorities || "none given"}
+- Available working hours: ${input['hours'] || "8"} per day
+- Planning horizon: ${input['horizon'] || "today"}
+- Stated priorities / deadlines: ${input['priorities'] || "none given"}
 
 METHOD
 Score each task on impact and urgency (Eisenhower-style), estimate effort, then sequence work to protect focus time and respect dependencies.
@@ -94,10 +94,10 @@ OUTPUT FORMAT (markdown, exactly these sections)
 
 TOPIC
 """
-${input.topic || ""}
+${input['topic'] || ""}
 """
-- Depth: ${input.depth || "standard briefing"}
-- Audience for the brief: ${input.audience || "internal team"}
+- Depth: ${input['depth'] || "standard briefing"}
+- Audience for the brief: ${input['audience'] || "internal team"}
 
 OUTPUT FORMAT (markdown, exactly these sections)
 **Snapshot**
